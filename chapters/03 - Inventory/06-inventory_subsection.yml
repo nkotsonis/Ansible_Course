@@ -1,0 +1,23 @@
+
+- name: Print hostvars
+  hosts: all
+
+  tasks:
+
+    - name: Filter inventory by linux architecture
+      ansible.builtin.group_by:
+        key: os_{{ ansible_distribution }}
+
+    - name: Filter inventory by package manager
+      ansible.builtin.group_by:
+        key: pkmgr_{{ ansible_pkg_mgr }}
+
+
+
+- name: List home folder
+  hosts: os_Ubuntu
+  gather_facts: false
+
+  tasks:
+    - name: List home folder for Ubuntu hosts
+      command: ls -l

@@ -1,0 +1,10 @@
+
+- name: List remote home folder
+  hosts: all
+  gather_facts: false
+
+  tasks:
+
+    - name: List remote home folder
+      command: ls -l
+

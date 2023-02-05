@@ -1,0 +1,2 @@
+
+ansible-vault rekey vars1.yml

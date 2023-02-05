@@ -1,0 +1,38 @@
+
+- name: Blocks of tasks
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+
+    - name: Variable is valid within the block only
+      block:
+
+        - name: First task
+          debug:
+            msg: First task
+
+        - name: Second task
+          debug:
+            msg: Second task
+
+      tags:
+        - tag1
+        - tag2
+
+
+    - name: Third task
+      tags: tag2
+      debug:
+        msg: Third task
+
+
+
+#============================ SEE ALSO ===============================================
+
+# Blocks
+# https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_blocks.html
+
+# Tags
+# https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_tags.html
+

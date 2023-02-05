@@ -1,0 +1,16 @@
+
+- name: Print ansible facts
+  hosts: localhost
+
+  tasks:
+
+    - name: Print facts
+      debug:
+        var: ansible_facts
+
+
+
+#============================ SEE ALSO ===============================================
+
+# Facts
+# https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_vars_facts.html

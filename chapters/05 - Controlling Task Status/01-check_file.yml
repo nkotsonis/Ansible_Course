@@ -1,0 +1,10 @@
+
+- name: List files
+  hosts: all
+  gather_facts: false
+
+  tasks:
+
+    - name: Check the presence of the file
+      stat:
+        path: ~/mytest.txt

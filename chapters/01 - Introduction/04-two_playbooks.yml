@@ -1,0 +1,16 @@
+
+- name: Execute one command on localhost
+  hosts: localhost
+
+  tasks:
+    - name: One other command
+      command: /bin/false
+
+
+
+- name: Execute another command on localhost
+  hosts: localhost
+  
+  tasks:
+    - name: One other command
+      command: /bin/true

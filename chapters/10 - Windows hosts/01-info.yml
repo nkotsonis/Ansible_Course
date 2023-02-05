@@ -1,0 +1,22 @@
+
+- name: Check connectivity
+  hosts: windows_hosts
+  gather_facts: false
+
+  tasks:
+
+    - name: Check connectivity
+      win_ping:
+
+    - name: Get disk information
+      win_disk_facts:
+
+    - name: Output first disk size
+      debug:
+        var: ansible_facts.disks[0].size
+
+
+#============================ SEE ALSO ===============================================
+
+# Windows modules
+# https://docs.ansible.com/ansible/2.8/modules/list_of_windows_modules.html

@@ -1,0 +1,35 @@
+
+- name: Templates
+  hosts: localhost
+  gather_facts: false
+
+  vars:
+    tasks:
+      - item 1
+      - list item 2
+      - item 3
+      - a new item here
+
+  tasks:
+
+    - name: Copy test file on the remote
+      template:
+        src: test_with_loop.txt.j2
+        dest: ~/test_with_loop.txt
+
+
+
+#============================ SEE ALSO ===============================================
+
+# Templating (Jinja2)
+# https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_templating.html
+
+# Template module
+# https://docs.ansible.com/ansible/latest/collections/ansible/builtin/template_module.html
+
+# Jinja filters
+# https://jinja.palletsprojects.com/en/3.1.x/templates/#builtin-filters
+
+# Template Designer Documentation
+# https://jinja.palletsprojects.com/en/3.1.x/templates/
+

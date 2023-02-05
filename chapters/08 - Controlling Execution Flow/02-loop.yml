@@ -1,0 +1,24 @@
+
+- name: Loop
+  hosts: localhost
+  gather_facts: false
+
+  vars:
+    remote_files:
+      - file1.txt
+      - file2.txt
+      - file3.txt
+
+  tasks:
+
+    - name: Create some files
+      copy:
+        content: This is a standard content
+        dest: "~/{{item}}"
+      loop: "{{remote_files}}"
+
+
+#============================ SEE ALSO ===============================================
+
+# Playbook loops
+# https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_loops.html

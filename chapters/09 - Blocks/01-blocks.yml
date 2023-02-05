@@ -1,0 +1,29 @@
+
+- name: Blocks of tasks
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+
+    - name: Variable is valid within the block only
+      vars:
+        var1: "This is a variable with the content"
+        var2: "This is a second variable with the content"
+      block:
+
+        - name: Print variable 'var1'
+          debug:
+            var: var1
+
+ 
+
+    - name: Print variable 'var1'
+      debug:
+        var: var1
+
+
+
+#============================ SEE ALSO ===============================================
+
+# Blocks
+# https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_blocks.html

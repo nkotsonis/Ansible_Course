@@ -1,0 +1,18 @@
+
+- name: Privilege escalation
+  hosts: all
+  gather_facts: false
+
+  tasks:
+
+    - name: Set hostname to remote hosts
+      become: true
+      hostname: 
+        name: "{{inventory_hostname}}"
+
+
+
+#============================ SEE ALSO ===============================================
+
+# Understanding privilege escalation: become
+# https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_privilege_escalation.html

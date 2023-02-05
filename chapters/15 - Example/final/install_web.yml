@@ -1,0 +1,11 @@
+---
+
+- name: Install web servers
+  hosts: webservers
+  roles:
+    - common
+    - httpd
+
+
+
+

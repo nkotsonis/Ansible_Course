@@ -1,0 +1,159 @@
+
+Getting started with Ansible
+https://docs.ansible.com/ansible/latest/getting_started/index.html
+
+Ansible concepts
+https://docs.ansible.com/ansible/latest/getting_started/basic_concepts.html
+
+
+YAML Syntax
+https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html
+
+Interpreter Discovery
+https://docs.ansible.com/ansible/latest/reference_appendices/interpreter_discovery.html
+
+
+Installation guide
+https://docs.ansible.com/ansible/latest/installation_guide/index.html
+
+
+Ansible documentation
+https://docs.ansible.com/ansible/latest/index.html
+
+
+
+https://docs.ansible.com/ansible/latest/reference_appendices/playbooks_keywords.html
+https://docs.ansible.com/ansible/latest/reference_appendices/common_return_values.html
+
+
+Building Ansible inventories
+https://docs.ansible.com/ansible/latest/inventory_guide/index.html
+
+Using Ansible command line tools
+https://docs.ansible.com/ansible/latest/command_guide/index.html
+
+Using Ansible playbooks
+https://docs.ansible.com/ansible/latest/playbook_guide/index.html
+
+Using Ansible collections
+https://docs.ansible.com/ansible/latest/collections_guide/index.html
+https://docs.ansible.com/ansible/latest/collections/index.html
+
+Ansible best practices
+https://docs.ansible.com/ansible/2.8/user_guide/playbooks_best_practices.html
+
+
+Sample Ansible setup
+https://docs.ansible.com/ansible/latest/tips_tricks/sample_setup.html
+
+
+
+Using Variables
+https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_variables.html
+
+Variable precedence
+https://docs.ansible.com/ansible/latest/reference_appendices/general_precedence.html
+https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_variables.html#understanding-variable-precedence
+
+
+Special and Magic Variables
+https://docs.ansible.com/ansible/latest/reference_appendices/special_variables.html
+
+
+Playbook loops
+https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_loops.html
+
+
+
+Using filters to manipulate data
+https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_filters.html
+
+Manipulating data
+https://docs.ansible.com/ansible/latest/playbook_guide/complex_data_manipulation.html
+
+
+
+
+Controlling where tasks run: delegation and local actions
+https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_delegation.html
+
+
+
+Templating (Jinja2)
+https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_templating.html
+
+
+Conditionals
+https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_conditionals.html
+
+
+Blocks
+https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_blocks.html
+
+
+Error handling
+https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_error_handling.html
+
+
+Handlers: running operations on change
+https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_handlers.html
+
+
+Re-using Ansible artifacts
+https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_reuse.html
+
+
+Interactive input: prompts
+https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_prompts.html
+
+
+Advanced playbook syntax
+https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_advanced_syntax.html
+
+
+
+Protecting sensitive data with Ansible vault
+https://docs.ansible.com/ansible/latest/vault_guide/index.html
+
+
+Lookups
+https://docs.ansible.com/ansible/latest/plugins/lookup.html
+
+Modules
+https://docs.ansible.com/ansible/latest/plugins/module.html
+https://docs.ansible.com/ansible/latest/module_plugin_guide/index.html
+https://docs.ansible.com/ansible/latest/collections/all_plugins.html#all-modules-and-plugins
+
+
+
+
+Configuration settings
+https://docs.ansible.com/ansible/latest/reference_appendices/config.html
+
+
+Controlling how Ansible behaves: precedence rules
+https://docs.ansible.com/ansible/latest/reference_appendices/general_precedence.html
+
+
+Ansible tips and tricks
+https://docs.ansible.com/ansible/latest/tips_tricks/index.html
+
+
+
+
+Network Getting Started
+https://docs.ansible.com/ansible/latest/network/getting_started/index.html#network-getting-started
+
+Network Advanced Topics
+https://docs.ansible.com/ansible/latest/network/user_guide/index.html
+
+
+
+
+Python 3 Support
+https://docs.ansible.com/ansible/latest/reference_appendices/python_3_support.html
+
+
+FAQ
+https://docs.ansible.com/ansible/latest/reference_appendices/faq.html
+

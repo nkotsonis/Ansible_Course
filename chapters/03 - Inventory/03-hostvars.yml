@@ -1,0 +1,15 @@
+
+- name: Print hostvars
+  hosts: all
+  gather_facts: false
+
+  tasks:
+
+    - name: Print hostvars
+      debug:
+        var: hostvars
+
+
+    # variable 'hostvars' contains the contents of the inventory (hosts file)
+    #   also contains discovered information on the remote host
+

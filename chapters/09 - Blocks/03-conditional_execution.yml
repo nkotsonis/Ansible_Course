@@ -1,0 +1,36 @@
+
+- name: Block of tasks
+  hosts: localhost
+  gather_facts: false
+
+  vars:
+    var1: Kostas
+
+  tasks:
+
+    - name: Execute conditionally
+      vars:
+        var2: Kostas
+      become: true
+      block:
+
+        - name: Print variable
+          debug:
+            var: var1
+
+        - name: Print variable
+          debug:
+            var: var2
+
+      when: var1 == var2
+
+
+
+#============================ SEE ALSO ===============================================
+
+# Blocks
+# https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_blocks.html
+
+# Conditionals
+# https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_conditionals.html
+

@@ -1,0 +1,35 @@
+
+- name: Encrypt variable
+  hosts: localhost
+  gather_facts: false
+
+  vars:
+    username: Nikos
+    password: !vault |
+              $ANSIBLE_VAULT;1.1;AES256
+              31393536363363633832346533666231613665323539356232353637623931643333323063373665
+              6430313134343930613533333532343937656232663763310a613934626430306538363937353865
+              66646336326330356536633263613336346135383939386337326336626665363436323433323465
+              3634386562333361640a626331656532343263343033373630636235333030636265623031323565
+              32386533646632663433343961333331303932373637383363633633616434313233
+  tasks:
+
+    - name: Print login info
+      debug:
+        msg: "{{username}} - {{password}}"
+
+
+# ansible-vault encrypt_string 'dfDfDFs#34Ss@#gh42So' --name 'password'
+
+
+
+#============================ SEE ALSO ===============================================
+
+# Ansible Vault User guide
+# https://docs.ansible.com/ansible/latest/vault_guide/index.html
+
+# Encrypting content with Ansible Vault
+# https://docs.ansible.com/ansible/latest/vault_guide/vault_encrypting_content.html
+
+# Using encrypted variables and files
+# https://docs.ansible.com/ansible/latest/vault_guide/vault_using_encrypted_content.html

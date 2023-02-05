@@ -1,0 +1,29 @@
+
+- name: Interactive input - prompts
+  hosts: localhost
+  gather_facts: false
+
+  vars_prompt:
+
+    - name: username
+      prompt: What is your username?
+      private: false
+
+    - name: password
+      prompt: What is your password?
+      private: true
+      # encrypt: sha512_crypt
+
+
+  tasks:
+
+    - name: Print the input data
+      debug:
+        msg: "{{username}} - {{password}}"
+
+
+
+#============================ SEE ALSO ===============================================
+
+# Interactive input: prompts
+# https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_prompts.html

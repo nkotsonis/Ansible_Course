@@ -1,0 +1,25 @@
+
+- name: Assert
+  hosts: all
+
+  tasks:
+
+    - name: Assert that the server has enough RAM
+      assert:
+        that:
+          - ansible_facts.memory_mb.real.total > 550
+        
+        fail_msg: "Host {{inventory_hostname}} does not have enough memory: \
+                    only {{ansible_facts.memory_mb.real.total}} MB is available"
+
+
+    - name: Second step
+      debug:
+        msg: Execution continues
+
+
+
+#============================ SEE ALSO ===============================================
+
+# Assert module
+# https://docs.ansible.com/ansible/latest/collections/ansible/builtin/assert_module.html

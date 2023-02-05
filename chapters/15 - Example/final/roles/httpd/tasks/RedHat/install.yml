@@ -1,0 +1,5 @@
+---
+
+- name: Install httpd apache server
+  yum:
+    name: httpd

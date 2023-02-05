@@ -1,0 +1,19 @@
+
+- name: Reboot remote machine
+  hosts: windows_hosts
+  gather_facts: false
+
+  tasks:
+
+    - name: Reboot remote machine
+      win_reboot:
+
+
+
+#============================ SEE ALSO ===============================================
+
+# Windows modules
+# https://docs.ansible.com/ansible/2.8/modules/list_of_windows_modules.html
+
+# Windows usage
+# https://docs.ansible.com/ansible/latest/os_guide/windows_usage.html

@@ -1,0 +1,13 @@
+
+ansible-inventory -i hosts --graph
+
+ansible-inventory -i hosts --list
+
+ansible-inventory --list -i hosts-test-1
+ansible-inventory --list -i hosts-test-2
+ansible-inventory --list -i hosts-test-3
+
+ansible-inventory --graph -i hosts-test-3
+
+ansible -m command -a /bin/true -i hosts-test-3 group3
+

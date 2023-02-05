@@ -1,0 +1,25 @@
+
+- name: Variable precedence
+  hosts: localhost
+  gather_facts: false
+
+  vars:
+    name1: George
+    label1: "My name: {{name1}}"
+
+  tasks:
+
+    - name: Print label
+      debug:
+        var: label1
+
+
+# ansible-playbook 04-precedence.yml -e name1=Panagiotis
+
+
+
+#============================ SEE ALSO ===============================================
+
+# Variable precedence
+# https://docs.ansible.com/ansible/latest/reference_appendices/general_precedence.html
+# https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_variables.html#understanding-variable-precedence

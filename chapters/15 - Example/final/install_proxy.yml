@@ -1,0 +1,9 @@
+
+- name: update proxy settings
+  hosts: haproxy
+  roles:
+    - common
+    - proxy
+
+
+

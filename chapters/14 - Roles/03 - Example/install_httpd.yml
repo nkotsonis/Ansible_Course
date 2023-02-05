@@ -1,0 +1,31 @@
+
+- name: Install httpd
+  hosts: localhost
+  gather_facts: false
+
+  roles:
+    - install_openssl
+    - install_httpd
+
+  tasks:
+    - name: task 1
+      debug:
+        msg: task 1
+
+  pre_tasks:
+    - name: Pre task 1
+      debug:
+        msg: pre-task 1
+
+  post_tasks:
+    - name: Post task 1
+      debug:
+        msg: post-task 1
+
+
+
+#============================ SEE ALSO ===============================================
+
+# Roles
+# https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_reuse_roles.html
+# https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_reuse_roles.html#role-directory-structure

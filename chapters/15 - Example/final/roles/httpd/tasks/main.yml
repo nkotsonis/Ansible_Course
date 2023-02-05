@@ -1,0 +1,8 @@
+---
+
+- include: "{{ansible_os_family}}/install.yml"
+- include: "{{ansible_os_family}}/service.yml"
+- include: "{{ansible_os_family}}/configure.yml"
+
+- include: "{{ansible_os_family}}/firewall.yml"
+  when: ansible_os_family == 'RedHat'

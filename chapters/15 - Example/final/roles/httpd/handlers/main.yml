@@ -1,0 +1,16 @@
+---
+
+
+- name: Restart httpd service
+  become: yes
+  service:
+    name: httpd
+    state: restarted
+
+
+- name: Restart apache service
+  become: yes
+  service:
+    name: apache2
+    state: restarted
+

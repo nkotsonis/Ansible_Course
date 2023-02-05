@@ -1,0 +1,36 @@
+
+- name: Data filtering
+  hosts: localhost
+  gather_facts: false
+
+  vars:
+    list1: ['a', 'b', 'c', 'd', 'e', 'f']
+    list2: ['1', '2', '3', '4', '5']
+
+  tasks:
+
+    - name: Combine elements from two lists
+      debug:
+        var: list1 | zip(list2)
+
+    - name: Combine elements from two lists (longest)
+      debug:
+        var: list1 | zip_longest(list2)
+
+    - name: Flatten lists (having depth of 1)
+      debug:
+        var: list1 | zip(list2) | flatten
+
+    - name: Sort lists 
+      debug:
+        var: list1 | zip(list2) | flatten | sort     # alphabetic sorting
+
+
+
+#============================ SEE ALSO ===============================================
+
+# Using filters to manipulate data
+# https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_filters.html
+
+# Manipulating data
+# https://docs.ansible.com/ansible/latest/playbook_guide/complex_data_manipulation.html

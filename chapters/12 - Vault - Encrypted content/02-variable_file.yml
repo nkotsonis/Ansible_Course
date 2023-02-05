@@ -1,0 +1,27 @@
+
+- name: Encrypt variable
+  hosts: localhost
+  gather_facts: false
+
+  vars_files:
+    - vars.yml
+
+  tasks:
+
+    - name: Print login info
+      debug:
+        msg: "{{username}} - {{password}}"
+
+
+
+
+#============================ SEE ALSO ===============================================
+
+# Ansible Vault User guide
+# https://docs.ansible.com/ansible/latest/vault_guide/index.html
+
+# Encrypting content with Ansible Vault
+# https://docs.ansible.com/ansible/latest/vault_guide/vault_encrypting_content.html
+
+# Using encrypted variables and files
+# https://docs.ansible.com/ansible/latest/vault_guide/vault_using_encrypted_content.html

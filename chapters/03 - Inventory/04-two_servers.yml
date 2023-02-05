@@ -1,0 +1,21 @@
+
+- name: Play 1
+  hosts: server-1
+  gather_facts: false
+
+  tasks:
+
+    - name: List folder
+      command: pwd
+
+
+
+- name: Play 2
+  hosts: 192.168.56.124
+  gather_facts: false
+
+  tasks:
+
+    - name: List second server's folder
+      command: pwd
+

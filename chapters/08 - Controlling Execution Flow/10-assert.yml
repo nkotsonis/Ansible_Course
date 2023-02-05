@@ -1,0 +1,35 @@
+
+- name: Assert
+  hosts: localhost
+  gather_facts: false
+
+
+  tasks:
+
+    - name: Create a text file
+      copy:
+        content: "This is a new test"
+        dest: ~/mytest.txt
+        mode: 0460
+
+    - name: Check the presence of the file
+      stat:
+        path: ~/mytest.txt
+      register: fileinfo
+
+
+    - name: Assert that the file exists and is writeable
+      assert:
+        that:
+          - fileinfo.stat.exists
+          - fileinfo.stat.writeable
+          - fileinfo.stat.isreg           # is regular file
+          - not fileinfo.stat.isdir       # not a directory
+        fail_msg: "file '{{fileinfo.stat.path}}' is not writeable"
+
+
+
+#============================ SEE ALSO ===============================================
+
+# Assert module
+# https://docs.ansible.com/ansible/latest/collections/ansible/builtin/assert_module.html

@@ -1,0 +1,14 @@
+---
+
+- include: install.yml
+
+- name: Block for configuration
+  block:
+    - include: find_active_servers.yml
+    - include: configure.yml
+  tags:
+    - configure
+
+- include: service.yml
+
+- include: firewall.yml

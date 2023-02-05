@@ -1,0 +1,37 @@
+
+- name: Data filtering
+  hosts: localhost
+  gather_facts: false
+
+  vars:
+    data1:
+      - name: Nikos
+        occupation: builder
+        items:
+          - my tag 1
+          - my tag 2
+          - my tag 3
+
+      - name: George
+        occupation: farmer
+        location: Greece
+        items:
+          - my tag 3
+          - my tag 4
+          - my tag 5
+  tasks:
+
+    - name: Subelements
+      debug:
+        var: data1 | subelements('items')
+
+
+
+
+#============================ SEE ALSO ===============================================
+
+# Using filters to manipulate data
+# https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_filters.html
+
+# Manipulating data
+# https://docs.ansible.com/ansible/latest/playbook_guide/complex_data_manipulation.html

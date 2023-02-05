@@ -1,0 +1,36 @@
+
+- name: Dictionary
+  hosts: localhost
+  gather_facts: false
+
+  vars:
+    list1: 
+      - first value
+      - second value
+      - third value
+
+    list2: ["one", "two", "three"]
+
+  tasks:
+
+    - name: Print
+      debug:
+        var: list1
+
+    - name: Print val1
+      debug:
+        var: list1[0]
+
+    - name: Print last value val1
+      debug:
+        var: list1 | last
+
+    - name: Print
+      debug:
+        var: list2
+
+
+#============================ SEE ALSO ===============================================
+
+# Lists
+# https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_variables.html#list-variables

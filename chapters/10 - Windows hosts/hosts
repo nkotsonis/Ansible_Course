@@ -1,0 +1,12 @@
+
+[windows_hosts]
+win_server-2019    ansible_host=192.168.56.132
+
+[windows_hosts:vars]
+ansible_user=remote1
+ansible_password=Qwerty-12345
+ansible_port=5985
+ansible_connection=winrm
+ansible_winrm_transport=basic
+ansible_winrm_server_cert_validation=ignore
+

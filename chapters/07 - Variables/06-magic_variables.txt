@@ -1,0 +1,10 @@
+
+Special and Magic Variables
+https://docs.ansible.com/ansible/latest/reference_appendices/special_variables.html
+
+
+group_names           List of groups the current host is part of
+groups                A dictionary/map with all the groups in inventory and each group has the list of hosts that belong to it
+hostvars              A dictionary/map with all the hosts in inventory and variables assigned to them
+inventory_hostname    The inventory name for the 'current' host being iterated over in the play
+

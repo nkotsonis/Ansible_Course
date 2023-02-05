@@ -1,0 +1,44 @@
+
+- name: Variable types
+  hosts: localhost
+  gather_facts: false
+
+  vars: 
+    var_string: "This is a test"
+    var_bool: true
+    var_int: 2544
+
+  tasks:
+
+    - name: Print string
+      debug:
+        var: var_string
+
+    - name: Print bool
+      debug:
+        var: var_bool
+
+    - name: Print int
+      debug:
+        var: var_int
+
+    - name: String replacement
+      debug:
+        msg: "String variable : {{var_string}}"
+
+    - name: Multi-line strings
+      debug:
+        msg: |
+          This is the first line
+          This is a test
+            This is a third line
+
+          ---END---
+
+
+
+
+#============================ SEE ALSO ===============================================
+
+# Variables
+# https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_variables.html

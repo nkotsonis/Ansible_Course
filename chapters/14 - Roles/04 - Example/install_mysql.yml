@@ -1,0 +1,9 @@
+
+- name: Install httpd
+  hosts: dbserver
+
+  roles:
+
+    - install_openssl
+    - install_mysql
+

@@ -1,0 +1,20 @@
+
+- name: Lazy evaluation of variables
+  hosts: localhost
+  gather_facts: false
+
+  roles:
+    - role1
+    - role2
+
+
+  tasks:
+
+    - name: Print my name
+      debug:
+        var: myname_str
+
+    - name: Print my name
+      debug:
+        var: myname
+    

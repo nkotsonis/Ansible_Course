@@ -1,0 +1,9 @@
+---
+
+- name: Open firewall port
+  firewalld:
+    port: "{{public_port}}/tcp"
+    zone: public
+    permanent: yes
+    immediate: yes
+    state: enabled

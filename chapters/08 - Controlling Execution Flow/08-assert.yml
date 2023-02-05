@@ -1,0 +1,37 @@
+
+- name: Assert
+  hosts: localhost
+  gather_facts: false
+
+  vars:
+    bool1: true
+    bool2: false
+
+
+  tasks:
+
+    - name: Assert that bool1 is true
+      assert:
+        that:
+          - bool1
+
+    - name: Assert that bool2 is false
+      assert:
+        that:
+          - not bool2
+
+    - name: Change value of bool2
+      set_fact:
+        bool2: true
+
+    - name: Assert that bool2 is false
+      assert:
+        that:
+          - not bool2
+
+
+
+#============================ SEE ALSO ===============================================
+
+# Assert module
+# https://docs.ansible.com/ansible/latest/collections/ansible/builtin/assert_module.html

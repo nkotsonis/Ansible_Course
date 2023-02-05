@@ -1,0 +1,41 @@
+
+
+--- CENTOS ---
+
+sudo yum update
+
+sudo yum install python3 python3-pip
+
+python3 -m pip install --user ansible
+
+echo "export PATH=\"$HOME/.local/bin:\$PATH\"" > ansible.sh
+sudo mv ansible.sh /etc/profile.d/
+
+
+pip3 install cryptography netaddr pycryptodomex --user
+
+
+
+
+--- UBUNTU ---
+
+sudo apt update
+
+sudo apt install python3 python3-pip
+
+python3 -m pip install --user ansible
+
+echo "export PATH=\"$HOME/.local/bin:\$PATH\"" > ansible.sh
+sudo mv ansible.sh /etc/profile.d/
+
+
+pip3 install cryptography netaddr pycryptodomex --user
+
+
+
+
+
+#============================ SEE ALSO ===============================================
+
+Installation guide
+https://docs.ansible.com/ansible/latest/installation_guide/index.html

@@ -1,0 +1,30 @@
+
+- name: Install 7-Zip
+  hosts: windows_hosts
+  gather_facts: false
+
+  tasks:
+
+    - name: Create tmp folder
+      win_file:
+        path: C:\tmp
+        state: directory
+
+    - name: Download 7-Zip package
+      win_get_url:
+        url: https://www.7-zip.org/a/7z2201-x64.msi
+        dest: C:\tmp
+
+    - name: Install 7-Zip
+      win_package:
+        path: C:\tmp\7z2201-x64.msi
+
+
+
+#============================ SEE ALSO ===============================================
+
+# Windows modules
+# https://docs.ansible.com/ansible/2.8/modules/list_of_windows_modules.html
+
+# Windows usage
+# https://docs.ansible.com/ansible/latest/os_guide/windows_usage.html

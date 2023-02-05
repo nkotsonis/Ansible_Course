@@ -1,0 +1,44 @@
+
+- name: Data filtering
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+
+    - name: Get google's certificate
+      community.crypto.get_certificate:
+        host: "www.google.com"
+        port: 443
+        # proxy_host: icache.intracomtel.com
+        # proxy_port: 80
+      register: cert1
+
+
+    - name: Print certificate
+      debug:
+        var: cert1
+
+
+    - name: Save creetificate to temp file
+      copy:
+        content: "{{cert1.cert}}"
+        dest: /tmp/cert.pem
+
+
+    - name: Get certificate information
+      community.crypto.x509_certificate_info:
+        path: /tmp/cert.pem
+        valid_at:
+          one_week: "+1w"
+          three_weeks: "+3w"
+      register: cert_info
+
+    - debug:
+        var: cert_info
+
+
+
+#============================ SEE ALSO ===============================================
+
+# Crypto module
+# https://docs.ansible.com/ansible/latest/collections/community/crypto/index.html

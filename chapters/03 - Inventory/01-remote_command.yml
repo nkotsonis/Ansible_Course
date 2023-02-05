@@ -1,0 +1,9 @@
+
+- name: Execute one command on localhost
+  hosts: all
+  gather_facts: false
+
+  tasks:
+
+    - name: One command
+      command: /bin/true

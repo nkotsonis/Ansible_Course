@@ -1,0 +1,8 @@
+---
+
+- name: Start httpd service
+  become: yes
+  service:
+    name: apache2
+    state: started
+    enabled: yes

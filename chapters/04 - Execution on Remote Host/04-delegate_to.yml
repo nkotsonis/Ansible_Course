@@ -1,0 +1,31 @@
+
+- name: Execute on another machine
+  hosts: web
+  gather_facts: false
+
+  tasks:
+
+    - name: Execute on the webservers
+      command: ls -l
+      register: result
+
+    - debug:
+        var: result
+
+
+    - name: Execute API call on the database server
+      delegate_to: "{{ groups['db'] | first }}"
+      run_once: true
+      command: "curl -v http://localhost:3232/v1/createUser/Nikos"
+      register: result
+      failed_when: false
+
+    - debug:
+        var: result
+
+
+
+#============================ SEE ALSO ===============================================
+
+# Controlling where tasks run: delegation and local actions
+# https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_delegation.html

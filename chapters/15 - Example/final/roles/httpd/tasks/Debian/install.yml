@@ -1,0 +1,7 @@
+---
+
+- name: Install httpd apache server
+  become: yes
+  apt:
+    name: apache2
+    update_cache: yes

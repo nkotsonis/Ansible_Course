@@ -1,0 +1,5 @@
+---
+
+myname_str: "My name is {{myname}}"
+
+download_path: "http://servername/path/to/{{filename}}"

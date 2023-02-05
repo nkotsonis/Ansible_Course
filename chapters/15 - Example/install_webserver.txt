@@ -1,0 +1,30 @@
+
+Install httpd (apache2)
+
+    yum install httpd
+    apt install apache2
+
+
+Start httpd service
+
+    systemctl start httpd
+    systemctl enable httpd
+    
+    systemctl start apache2
+    systemctl enable apache2
+
+Open firewall ports
+
+    firewall-cmd --add-service=http --zone=public --permanent
+    firewall-cmd --add-service=https --zone=public --permanent
+    firewall-cmd --reload
+
+
+
+Copy sample http content in htdocs
+
+
+    echo "<h2>server-1</h2>" > /var/www/html/index.html
+
+    echo "<h2>server-2</h2>" > index.html
+    sudo mv index.html /var/www/html/

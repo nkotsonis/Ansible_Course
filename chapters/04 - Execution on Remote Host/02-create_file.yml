@@ -1,0 +1,22 @@
+
+- name: Create files to remote
+  hosts: all
+  gather_facts: false
+
+  tasks:
+
+    - name: Create a text file
+      copy:
+        content: "{{inventory_hostname}} - This is a new test"
+        dest: ~/mytest.txt
+        mode: 0600
+
+    - name: Check the presence of the file
+      stat:
+        path: ~/mytest.txt
+      register: fileinfo
+
+
+    - name: Print the file information
+      debug:
+        var: fileinfo.stat

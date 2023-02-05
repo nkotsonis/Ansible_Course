@@ -1,0 +1,19 @@
+
+- name: Retry
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+
+    - name: Get a random number
+      command: /bin/false
+      until: (10 | random) > 7
+      retries: 10
+      delay: 1
+
+
+
+#============================ SEE ALSO ===============================================
+
+# Until
+# https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_loops.html#retrying-a-task-until-a-condition-is-met

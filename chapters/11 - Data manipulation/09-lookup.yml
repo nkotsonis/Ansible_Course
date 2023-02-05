@@ -1,0 +1,35 @@
+
+- name: Lookup
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+
+
+    # https://docs.ansible.com/ansible/latest/collections/ansible/builtin/sequence_lookup.html
+
+    - name: Create a sequence of numbers
+      set_fact:
+        myvar1: "{{ lookup('sequence', 'start=2 end=42 stride=2') }}"  
+
+    - name: Print the variable
+      debug:
+        var: myvar1
+
+
+    - name: Create a sequence of numbers
+      set_fact:
+        myvar1: "{{ lookup('sequence', 'start=2 end=42 stride=2').split(',') | map('int') | map('log', 2)  }}"  
+
+
+    - name: Print the variable
+      debug:
+        var: myvar1
+
+
+
+
+#============================ SEE ALSO ===============================================
+
+# Lookups
+# https://docs.ansible.com/ansible/latest/plugins/lookup.html

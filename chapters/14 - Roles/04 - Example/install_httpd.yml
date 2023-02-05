@@ -1,0 +1,9 @@
+
+- name: Install httpd
+  hosts: webservers
+
+  roles:
+
+    - install_openssl
+    - install_httpd
+

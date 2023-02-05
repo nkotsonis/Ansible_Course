@@ -1,0 +1,30 @@
+
+
+
+
+- name: Execute one command on localhost      #   <-------- NAME OF THIS PLAY
+  hosts: localhost                            #   <-------- TARGET HOSTS FOR THIS PLAY
+
+  tasks:
+    - name: One command                       #   <-------- NAME OF THIS TASK
+      command: /bin/true
+
+#        ^
+#        |
+#        +-------- MODULE
+
+
+#============================ SEE ALSO ===============================================
+
+# All keywords used in playbooks
+# https://docs.ansible.com/ansible/latest/reference_appendices/playbooks_keywords.html
+
+
+# Modules
+# https://docs.ansible.com/ansible/latest/plugins/module.html
+# https://docs.ansible.com/ansible/latest/module_plugin_guide/index.html
+# https://docs.ansible.com/ansible/latest/collections/all_plugins.html
+
+
+# Advanced playbook syntax
+# https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_advanced_syntax.html

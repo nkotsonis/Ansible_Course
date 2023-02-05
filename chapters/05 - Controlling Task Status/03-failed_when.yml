@@ -1,0 +1,24 @@
+
+- name: List files
+  hosts: all
+  gather_facts: false
+
+  tasks:
+
+    - name: Check the presence of the file
+      stat:
+        path: ~/mytest.txt
+      register: fileinfo
+      failed_when: not fileinfo.stat.exists   # <---- FAIL WHEN FILE IS ABSENT
+
+
+    - name: Print the file status
+      debug:
+        var: fileinfo.stat.exists
+
+
+
+#============================ SEE ALSO ===============================================
+
+# Defining failure
+# https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_error_handling.html#defining-failure

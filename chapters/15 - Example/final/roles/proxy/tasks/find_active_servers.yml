@@ -1,0 +1,42 @@
+---
+
+- name: Check if host is available (ping)
+  command: "ping -c 1 -W 1 {{hostvars[item].ansible_host}}"
+  loop: "{{groups['webservers']}}"
+  ignore_errors: true
+  changed_when: false
+  register: result
+
+# - debug:
+#     var: result
+
+- name: Filter out all hosts that are not responding in ping
+  set_fact:
+    hosts1: "{{ result.results | 
+                  reject('failed') | 
+                  map(attribute='item') | list }}"
+
+
+- name: Check if host is available (check open port)
+  wait_for: 
+    host: "{{hostvars[item].ansible_host}}"
+    port: "{{hostvars[item].web_port}}"
+    timeout: 5
+  loop: "{{hosts1}}"
+  ignore_errors: true
+  register: result
+
+
+- name: Filter out all hosts that are not serving http content
+  set_fact:
+    hosts2: "{{ result.results | 
+                  reject('failed') | 
+                  map(attribute='item') | list }}"
+
+
+- name: Filter hostvars and keep only the active hosts
+  set_fact:
+    active_hosts: "{{ hosts2 | map('extract', hostvars) }}"
+
+# - debug:
+#     var: active_hosts

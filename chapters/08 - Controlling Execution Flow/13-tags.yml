@@ -1,0 +1,48 @@
+
+- name: Tags
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+
+    - name: Download file
+      debug:
+        msg: "File is being downloaded"
+      tags:
+        - pre
+
+    - name: Unzip file
+      debug:
+        msg: "File is unzipped"
+      tags:
+        - pre
+
+    - name: Compile application
+      debug:
+        msg: "Application is compiled"
+      tags:
+        - install
+
+    - name: Install application
+      debug:
+        msg: "Application is installed"
+      tags:
+        - install
+        - config
+
+    - name: Post Install 
+      debug:
+        msg: "Post install steps"
+      tags:
+        - post
+
+
+# ansible-playbook 13-tags.yml -t install
+# ansible-playbook 13-tags.yml --skip-tags install
+
+
+
+#============================ SEE ALSO ===============================================
+
+# Tags
+# https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_tags.html

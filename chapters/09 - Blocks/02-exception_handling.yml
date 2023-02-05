@@ -1,0 +1,44 @@
+
+- name: Blocks of tasks
+  hosts: localhost
+  gather_facts: false
+
+  vars:
+    var1: "Nikos"
+
+  tasks:
+
+    - name: Handle exceptions
+      block:
+
+        - name: Execute failed command
+          command: /bin/false
+          register: command_result
+
+        - name: Print variable
+          debug:
+            var: var1
+
+
+      rescue:
+
+        - name: Print outcome of the command
+          debug:
+            var: command_result
+
+
+
+    - name: Task out of the block
+      debug:
+        msg: Task out of the block
+
+
+
+#============================ SEE ALSO ===============================================
+
+# Blocks
+# https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_blocks.html
+
+# Error handling
+# https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_error_handling.html
+

@@ -1,0 +1,49 @@
+
+- name: Dictionary
+  hosts: localhost
+  gather_facts: false
+
+  vars:
+    dict1: 
+      val1: first value
+      val2: second value
+      name:
+        firstname: Nikos
+        lastname: Nikolaou
+    
+    dict2: 
+      first_val: first value
+      second_val: "second value, {{dict1.val1}}"
+
+    dict3: {
+      "one": "This is a test",
+      "two": "Another test"
+    }
+
+  tasks:
+
+    - name: Print
+      debug:
+        var: dict1
+
+    - name: Print val1
+      debug:
+        var: dict1.val1
+
+    - name: Print val2
+      debug:
+        var: dict1.name.firstname
+
+    - name: Print val2
+      debug:
+        var: dict2.second_val
+
+    - name: Print
+      debug:
+        var: dict3
+
+
+#============================ SEE ALSO ===============================================
+
+# Variables
+# https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_variables.html#dictionary-variables

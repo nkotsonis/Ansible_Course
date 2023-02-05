@@ -1,0 +1,50 @@
+
+- name: Conditional execution
+  hosts: localhost
+  gather_facts: false
+
+  vars:
+    condition1: true
+    condition2: true
+
+    file_content: "This is a standard content\n"
+
+  tasks:
+
+    - name: Copy files when conditions are met
+      copy:
+        content: "{{file_content}}"
+        dest: "~/file1.txt"
+      when: condition1 and condition2
+
+
+    - name: Copy files when conditions are met
+      copy:
+        content: "{{file_content}}"
+        dest: "~/file1.txt"
+      when: condition1 or condition2
+
+
+    - name: Copy files when conditions are met
+      copy:
+        content: "{{file_content}}"
+        dest: "~/file1.txt"
+      when: 
+        - condition1 
+        - condition2
+
+
+    - name: Copy files when conditions are met
+      copy:
+        content: "{{file_content}}"
+        dest: "~/file1.txt"
+      when: 
+        - condition1 
+        - not condition2
+
+
+
+#============================ SEE ALSO ===============================================
+
+# Conditionals
+# https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_conditionals.html

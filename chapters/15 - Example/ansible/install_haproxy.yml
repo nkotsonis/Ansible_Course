@@ -1,0 +1,43 @@
+
+- name: Install haproxy
+  hosts: haproxy
+
+  tasks:
+
+    - name: Install haproxy server
+      become: true
+      yum:
+        name: haproxy
+        state: latest
+        update_cache: true
+
+
+    - name: Start service
+      become: true
+      service:
+        name: haproxy
+        state: started
+        enabled: true
+
+
+    - name: Open firewall ports
+      become: true
+      ansible.posix.firewalld:
+        port: "{{public_port}}/tcp"
+        state: enabled
+        zone: public
+        permanent: true
+        immediate: true
+
+
+    - name: Find haproxy configuration file
+      become: true
+      ansible.builtin.find:
+        paths: /
+        patterns: haproxy.cfg
+        recurse: true
+      register: file_list
+
+    - debug:
+        var: file_list.files
+

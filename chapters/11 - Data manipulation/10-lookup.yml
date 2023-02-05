@@ -1,0 +1,30 @@
+
+- name: Lookup
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+
+
+    # https://docs.ansible.com/ansible/latest/collections/ansible/builtin/env_lookup.html
+
+    - name: Read PATH from the environment
+      set_fact:
+        myvar1: "{{ lookup('env', 'PATH') }}"     # CAUTION: lookup is executed on the LOCAL machine
+
+    - name: Print the variable
+      debug:
+        var: myvar1
+
+
+    - name: Read PATH from the environment
+      set_fact:
+        myvar1: "{{ lookup('env', 'PATH', default='') }}"     # CAUTION: lookup is executed on the LOCAL machine
+
+
+
+
+#============================ SEE ALSO ===============================================
+
+# Lookups
+# https://docs.ansible.com/ansible/latest/plugins/lookup.html

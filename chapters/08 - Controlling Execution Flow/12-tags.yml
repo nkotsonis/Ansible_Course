@@ -1,0 +1,28 @@
+
+- name: Tags
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+
+    - name: Download file
+      debug:
+        msg: "File is being downloaded"
+
+    - name: Unzip file
+      debug:
+        msg: "File is unzipped"
+
+    - name: Compile application
+      debug:
+        msg: "Application is compiled"
+
+    - name: Install application
+      debug:
+        msg: "Application is installed"
+
+
+#============================ SEE ALSO ===============================================
+
+# Tags
+# https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_tags.html

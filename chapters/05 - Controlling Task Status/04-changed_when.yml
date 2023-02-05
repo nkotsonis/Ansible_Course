@@ -1,0 +1,20 @@
+
+- name: List files
+  hosts: all
+  gather_facts: false
+
+  tasks:
+
+    - name: Check the presence of the file
+      stat:
+        path: ~/mytest.txt
+      register: fileinfo
+      changed_when: not fileinfo.stat.exists   # <---- MARK AS CHANGED WHEN FILE IS ABSENT
+
+
+
+#============================ SEE ALSO ===============================================
+
+# Defining "changed"
+# https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_error_handling.html#defining-changed
+

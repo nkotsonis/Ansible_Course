@@ -1,0 +1,8 @@
+
+- name: Print my name
+  debug:
+    var: myname_str
+
+- name: Download file
+  debug:
+    var: download_path

@@ -1,0 +1,8 @@
+
+
+# execute one command on localhost
+
+ansible -m command -a /bin/true localhost
+
+
+https://docs.ansible.com/ansible/latest/network/getting_started/basic_concepts.html

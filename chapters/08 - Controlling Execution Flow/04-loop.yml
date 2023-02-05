@@ -1,0 +1,34 @@
+
+- name: Loop
+  hosts: localhost
+  gather_facts: false
+
+  vars:
+    remote_files:
+      - name: file1.txt
+        mode: "0644"
+      - name: file2.txt
+        mode: "0440"
+      - name: file3.txt
+        mode: "0400"
+
+  tasks:
+
+    - name: Create some files
+      copy:
+        content: "This is a standard content - {{counter}}\n"
+        dest: "~/{{filename.name}}"
+        mode: "{{filename.mode}}"
+      loop: "{{remote_files}}"
+      loop_control:
+        loop_var: filename
+        index_var: counter
+        # label: "{{filename.name}}"
+
+
+
+#============================ SEE ALSO ===============================================
+
+# Playbook loops
+# https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_loops.html
+

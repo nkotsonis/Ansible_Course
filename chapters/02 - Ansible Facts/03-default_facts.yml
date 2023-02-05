@@ -1,0 +1,44 @@
+
+- name: Set default facts for one host
+  hosts: server-2
+  gather_facts: false
+
+  tasks:
+
+    - name: Create facts.d folder 
+      become: true
+      file:
+        path: /etc/ansible/facts.d
+        state: directory
+
+    - name: Create a file for holding the host's default facts 
+      become: true
+      copy:
+        content: |
+          [group var 1]
+          my_fact1=This is a test
+          my_fact2=Second test
+          
+          [group var 2]
+          my_fact1=This is a second test
+
+        dest: /etc/ansible/facts.d/personal.fact
+
+
+
+- name: Print all hostvars
+  hosts: all
+
+  tasks:
+
+    - name: Print hostvars
+      debug:
+        var: ansible_facts
+
+
+
+#============================ SEE ALSO ===============================================
+
+# Facts
+# https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_vars_facts.html#adding-custom-facts
+

@@ -1,0 +1,30 @@
+---
+
+- name: Find the path of index.html to edit
+  find:
+    paths: 
+      - /usr/share/httpd
+      - /var/www/html
+    patterns: "*index.html"
+    recurse: yes
+  register: file1
+  failed_when: file1.matched == 0
+
+
+- name: Change content of h1 header in the index file
+  become: yes
+  lineinfile:
+    path: "{{item.path}}"
+    regexp: ".*Apache2 Default Page.*"
+    line: "Server is {{ansible_hostname}}"
+  loop: "{{file1.files}}"
+
+
+- name: Set listen address to '{{web_port}}'
+  become: yes
+  lineinfile:
+    path: /etc/apache2/ports.conf
+    regexp: "^Listen "
+    line: "Listen {{web_port}}"
+  notify: Restart apache service
+

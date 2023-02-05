@@ -1,0 +1,8 @@
+
+- name: Check find server
+  hosts: server-1
+
+  tasks:
+
+    - include: roles/proxy/tasks/find_active_servers.yml
+

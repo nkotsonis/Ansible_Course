@@ -1,0 +1,16 @@
+
+- name: Install httpd
+  hosts: localhost
+  gather_facts: false
+
+  roles:
+    - install_openssl
+    - install_httpd
+
+
+
+#============================ SEE ALSO ===============================================
+
+# Roles
+# https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_reuse_roles.html
+# https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_reuse_roles.html#role-directory-structure

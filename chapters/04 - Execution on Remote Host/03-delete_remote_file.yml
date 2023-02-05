@@ -1,0 +1,29 @@
+
+- name: Delete remote file
+  hosts: server-1
+  gather_facts: false
+
+  tasks:
+
+    - name: Delete remote file
+      file:
+        path: ~/mytest.txt
+        state: absent
+
+
+
+- name: List files
+  hosts: all
+  gather_facts: false
+
+  tasks:
+
+    - name: Check the presence of the file
+      stat:
+        path: ~/mytest.txt
+      register: fileinfo
+
+
+    - name: Print the file information
+      debug:
+        var: fileinfo.stat

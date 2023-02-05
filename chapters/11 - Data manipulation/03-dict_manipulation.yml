@@ -1,0 +1,44 @@
+
+- name: Data filtering
+  hosts: localhost
+  gather_facts: false
+
+  vars:
+    data1:
+      name: Nikos
+      occupation: builder
+
+    data2:
+      city: Patras
+
+    data3:
+      name: George
+      occupation: farmer
+
+
+  tasks:
+
+    - name: Combine dict elements
+      debug:
+        var: data1 | combine(data2)
+
+    - name: Combine dict elements
+      debug:
+        var: data1 | combine(data3)
+
+    - name: dict to list manipulation
+      debug:
+        var: data1 | combine(data2) | dict2items
+
+    - name: list to dict manipulation
+      debug:
+        var: data1 | combine(data2) | dict2items | items2dict
+
+
+#============================ SEE ALSO ===============================================
+
+# Using filters to manipulate data
+# https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_filters.html
+
+# Manipulating data
+# https://docs.ansible.com/ansible/latest/playbook_guide/complex_data_manipulation.html

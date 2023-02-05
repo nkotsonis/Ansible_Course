@@ -1,0 +1,28 @@
+---
+
+- name: Find the path of index.html to edit
+  find:
+    paths: 
+      - /usr/share/httpd
+      - /var/www/html
+    patterns: "*index.html"
+    recurse: yes
+  register: file1
+  failed_when: file1.matched == 0
+
+
+- name: Change content of h1 header in the index file
+  lineinfile:
+    path: "{{item.path}}"
+    regexp: "<h1>.*</h1>"
+    line: "<h1>Server is {{inventory_hostname}}</h1>"
+  loop: "{{file1.files}}"
+
+
+- name: Set listen address to '{{web_port}}'
+  lineinfile:
+    path: /etc/httpd/conf/httpd.conf
+    regexp: "^Listen "
+    line: "Listen {{web_port}}"
+  notify: Restart httpd service
+

@@ -1,0 +1,10 @@
+
+- name: Privilege escalation
+  hosts: all
+  gather_facts: false
+
+  tasks:
+
+    - name: Set hostname to remote hosts
+      hostname: 
+        name: "{{inventory_hostname}}"

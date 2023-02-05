@@ -1,0 +1,67 @@
+
+- name: Data filtering
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+
+    # - name: Print hostvars
+    #   debug:
+    #     var: hostvars
+
+    - name: Filter hostvars and find the webservers
+      debug:
+        msg: "{{ hostvars | dict2items | 
+                  selectattr('value.role', 'defined') |
+                  selectattr('value.role', 'match', 'web*') |
+                  map(attribute='key') | list }}"
+
+
+    - name: Filter hostvars and find the webservers
+      debug:
+        msg: "{{ hostvars | dict2items | 
+                  selectattr('value.role', 'defined') |
+                  selectattr('value.role', 'match', 'web*') |
+                  map(attribute='value.ansible_host') | list }}"
+
+    - name: Merge two lookups into pair of elements
+      debug:
+        msg: "{{ hostvars | dict2items | 
+                  selectattr('value.role', 'defined') |
+                  selectattr('value.role', 'match', 'web*') |
+                  map(attribute='key') | list | 
+                  zip(
+                    hostvars | dict2items | 
+                    selectattr('value.role', 'defined') |
+                    selectattr('value.role', 'match', 'web*') |
+                    map(attribute='value.ansible_host') | list
+                  ) 
+              }}"
+
+
+    - name: Get dictionary from pair of elements
+      debug:
+        msg: "{{ dict(  hostvars | dict2items | 
+                        selectattr('value.role', 'defined') |
+                        selectattr('value.role', 'match', 'web*') |
+                        map(attribute='key') | list | 
+                        zip(
+                          hostvars | dict2items | 
+                          selectattr('value.role', 'defined') |
+                          selectattr('value.role', 'match', 'web*') |
+                          map(attribute='value.ansible_host') | list
+                        )
+                  )
+              }}"
+
+
+#============================ SEE ALSO ===============================================
+
+# Using filters to manipulate data
+# https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_filters.html
+
+# Manipulating data
+# https://docs.ansible.com/ansible/latest/playbook_guide/complex_data_manipulation.html
+
+# All filters
+# https://docs.ansible.com/ansible/latest/collections/index_filter.html

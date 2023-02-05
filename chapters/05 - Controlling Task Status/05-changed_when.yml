@@ -1,0 +1,37 @@
+
+- name: List files
+  hosts: all
+  gather_facts: false
+
+  handlers:
+    - name: Restart web server
+      debug:
+        msg: Web server is restarted !!!
+
+
+  tasks:
+
+    - name: Check the presence of the file
+      stat:
+        path: ~/mytest.txt
+      register: fileinfo
+      changed_when: not fileinfo.stat.exists   # <---- MARK AS CHANGED WHEN FILE IS ABSENT
+      notify: Restart web server               # <---- EXECUTE HANDLER WHEN ACTION IS MADE
+
+
+    - name: Check the presence of the file
+      stat:
+        path: ~/mytest.txt
+      register: fileinfo
+      changed_when: not fileinfo.stat.exists   # <---- MARK AS CHANGED WHEN FILE IS ABSENT
+      notify: Restart web server               # <---- EXECUTE HANDLER WHEN ACTION IS MADE
+
+
+
+#============================ SEE ALSO ===============================================
+
+# Handlers: running operations on change
+# https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_handlers.html
+
+# Defining "changed"
+# https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_error_handling.html#defining-changed

@@ -1,0 +1,26 @@
+
+
+Install haproxy
+
+    yum install haproxy
+
+
+
+Start haproxy service
+
+    systemctl start haproxy
+    systemctl enable haproxy
+
+
+Open firewall port
+
+    firewall-cmd --add-port=5000/tcp --zone=public --permanent
+    firewall-cmd --reload
+
+
+Find the location of the haproxy config
+
+    find / -name haproxy.cfg
+
+Edit frontend data 
+Add backend servers

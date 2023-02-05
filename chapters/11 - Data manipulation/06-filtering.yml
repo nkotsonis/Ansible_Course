@@ -1,0 +1,85 @@
+
+- name: Data filtering
+  hosts: localhost
+  gather_facts: false
+
+  vars:
+
+    list1: [1, 3, 12, 234, -234, 2, 56, 873, 1, 54, 4]
+    list2: [1, 3, 12, "234", "-234", 2, 56, 873, 1, 54, 4]
+
+  tasks:
+
+    - name: Get max value
+      debug:
+        var: list1 | max
+
+    - name: Get min value
+      debug:
+        var: list1 | min
+
+    - name: Get sum
+      debug:
+        var: list1 | sum
+
+
+    # - name: Get max value
+    #   debug:
+    #     var: list2 | max
+
+
+    - name: Shuffle list
+      debug:
+        var: list1 | shuffle
+
+
+    - name: Sort list and remove duplicate items
+      debug:
+        var: list1 | sort | unique
+
+
+    - name: Get the file part of the URL
+      debug:
+        msg: "{{ 'http://google.com/req/test.html' | basename }}"
+
+
+    - name: Get the components of the URL
+      debug:
+        msg: "{{ 'http://google.com:6443/req/test.html' | urlsplit }}"
+
+
+    - name: Translate shell variables
+      debug:
+        msg: "{{ '$HOME/test.html' | expandvars }}"
+
+
+    - name: Get the next 7th address using CIDR notation
+      debug:
+        msg: "{{ '192.168.1.53/27' | ansible.utils.ipmath(7) }}"
+
+
+    - name: Get the 7th address in the network range
+      debug:
+        msg: "{{ '192.168.1.53/27' | ansible.utils.ipsubnet | ansible.utils.ipmath(7) }}"
+
+
+    - name: Check if a network is part of another network.
+      debug:
+        msg: "{{ '192.168.0.0/16' | ansible.utils.network_in_network( '192.168.1.0/24' ) }}"
+
+
+    - name: Expand and produce list of usable IP addresses
+      debug:
+        msg: "{{ '10.0.1.200/29' | ansible.utils.usable_range }}"
+
+
+#============================ SEE ALSO ===============================================
+
+# Using filters to manipulate data
+# https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_filters.html
+
+# Manipulating data
+# https://docs.ansible.com/ansible/latest/playbook_guide/complex_data_manipulation.html
+
+# All filters
+# https://docs.ansible.com/ansible/latest/collections/index_filter.html

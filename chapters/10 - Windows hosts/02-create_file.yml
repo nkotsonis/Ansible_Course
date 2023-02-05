@@ -1,0 +1,27 @@
+
+- name: Create file
+  hosts: windows_hosts
+  gather_facts: false
+
+  tasks:
+
+    - name: Create tmp folder
+      win_file:
+        path: C:\tmp
+        state: directory
+
+
+    - name: Create file
+      win_copy:
+        content: This is a test
+        dest: C:\tmp\test1.txt
+
+
+
+#============================ SEE ALSO ===============================================
+
+# Windows modules
+# https://docs.ansible.com/ansible/2.8/modules/list_of_windows_modules.html
+
+# Windows usage
+# https://docs.ansible.com/ansible/latest/os_guide/windows_usage.html

@@ -1,0 +1,61 @@
+
+
+# Two kinds of filters:
+#   - Final
+#   - Intermediate
+
+#   "Final" filters provide a result --> they return a number, a string, a list, etc
+#   "Intermediate" provide a manipulation function (eg. filtering, mapping) --> they return a generator object
+
+# Filters can also be split in three categories:
+#   - Map (output data set with the same number of elements -> one-to-one manipulation)
+#   - Filter (output data set with fewer elements)
+#   - Final function (providing a final set of elements -> data elements are manipulated here)
+
+#    +----------+     +----------+     +----------+     +------------------+
+#    | DATA SET |-----|  FILTER  |-----|  FILTER  |-----|  FINAL FUNCTION  |
+#    +----------+     +----------+     +----------+     +------------------+
+
+# Each element is manipulated at most once. 
+# It either reaches the end of the "pipeline", or it is "filtered" earlier
+
+
+- name: Data filtering
+  hosts: localhost
+  gather_facts: false
+
+  vars:
+    name1: Panagiotis
+  
+  tasks:
+
+    - name: Variable convert to uppercase
+      debug:
+        var: name1 | upper
+
+
+    - name: Default value
+      debug:
+        var: name2 | default('Unknown')     # get default value when variable is undefined
+
+
+    - name: Read name from environment - provide default value
+      debug:
+        var: lookup('env', 'name2') | default('Unknown', true)     # get default value when variable = false or empty
+    
+    - name: ternary
+      debug:
+        var: false | ternary( "Value for true", "Value for false")
+
+
+
+#============================ SEE ALSO ===============================================
+
+# Using filters to manipulate data
+# https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_filters.html
+
+# Manipulating data
+# https://docs.ansible.com/ansible/latest/playbook_guide/complex_data_manipulation.html
+
+# All filters
+# https://docs.ansible.com/ansible/latest/collections/index_filter.html

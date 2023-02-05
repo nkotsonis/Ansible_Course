@@ -1,0 +1,34 @@
+---
+
+- name: second play
+  hosts: localhost
+
+  tasks:
+
+    - name: Get disk free space
+      command: df
+      register: diskfree
+
+
+    - name: debug
+      debug:
+        var: diskfree.stdout_lines
+
+
+    - name: Get first word of output (using python)
+      set_fact:
+        var2: "{{ ((diskfree.stdout).split(' '))[0] }}"
+    #                                  ^
+    #                                  |
+    #                             Python split
+
+    - debug:
+        var: var2
+
+
+    - name: Get first word of output (using filters)
+      set_fact:
+        var3: "{{ diskfree.stdout | split(' ') | first }}"
+
+    - debug:
+        var: var3
