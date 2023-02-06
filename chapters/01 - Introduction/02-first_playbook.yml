@@ -13,6 +13,9 @@
 #        |
 #        +-------- MODULE
 
+# Ansible modules are executed on the remote machine by first substituting the parameters 
+# into the module file, then copying the file to the remote machine, and finally executing it there.
+
 
 #============================ SEE ALSO ===============================================
 
@@ -28,3 +31,4 @@
 
 # Advanced playbook syntax
 # https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_advanced_syntax.html
+

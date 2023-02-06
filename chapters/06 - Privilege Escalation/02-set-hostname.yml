@@ -6,7 +6,7 @@
   tasks:
 
     - name: Set hostname to remote hosts
-      become: true
+      become: true    # <---------------------  equivalent to sudo
       hostname: 
         name: "{{inventory_hostname}}"
 
