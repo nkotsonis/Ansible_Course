@@ -1,0 +1,13 @@
+---
+
+- name: Gether all remote SSH keys and generate local SSH key
+  hosts: localhost
+  gather_facts: no
+
+  tasks:
+
+    - include: include/add_host.yml
+      loop: "{{ hostvars | dict2items | map(attribute='value.ansible_host') | list }}"
+      loop_control:
+          loop_var: host_ip_addr
+      

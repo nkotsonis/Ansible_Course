@@ -1,0 +1,8 @@
+
+[routergrp]
+router1   ansible_host=192.168.2.34    ansible_user=test1
+
+
+[routergrp:vars]
+ansible_connection=ansible.netcommon.network_cli
+ansible_network_os=community.network.routeros

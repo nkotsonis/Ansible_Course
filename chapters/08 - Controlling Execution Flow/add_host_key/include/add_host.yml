@@ -1,0 +1,16 @@
+---
+
+- name: Get the remote SSH host keys for '{{ host_ip_addr }}'
+  delegate_to: localhost
+  run_once: yes
+  command: "ssh-keyscan {{ host_ip_addr }}"
+  register: host_key_values
+
+
+- include: add_host_key.yml
+  loop: "{{host_key_values.stdout_lines}}"
+  loop_control:
+      loop_var: host_key_info
+      index_var: key_index_1
+  
+  when: (host_key_info | length) > 0

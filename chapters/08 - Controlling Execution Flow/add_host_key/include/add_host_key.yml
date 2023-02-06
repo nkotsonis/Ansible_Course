@@ -1,0 +1,10 @@
+---
+
+- name: Add SSH key {{key_index_1+1}} for host '{{ host_info }}' in known_hosts
+  delegate_to: localhost
+  run_once: yes
+  ansible.builtin.known_hosts:
+    name: "{{ host_info }}"
+    key: "{{ host_key_info }}"
+    path: ~/.ssh/known_hosts
+    state: present

@@ -1,0 +1,66 @@
+
+- name: RouterOS
+  hosts: router1
+
+  vars:
+    ansible_password: !vault |
+              $ANSIBLE_VAULT;1.1;AES256
+              63336462393863666366343662383733656163323430646435346238656264336265633634353837
+              3365393966353565643830376562333737636562616166640a366238363663353630313831366638
+              35653464376164346234376365376438636430666130383634353533326232653666373630376636
+              3231316136663539620a663766333763306264313233313634373537353930636162626535646131
+              3362
+  
+  tasks:
+
+    - name: Display resource statistics (routeros)
+      community.network.routeros_command:
+        commands: /system resource print
+      register: routeros_resources
+
+    - name: Print resources
+      debug:
+        var: routeros_resources
+
+
+
+    - name: Display counters
+      community.network.routeros_command:
+        commands: /interface print stats
+      register: routeros_counters
+
+    - name: Print counters
+      debug:
+        var: routeros_counters
+
+
+
+
+    - name: Get IP addresses
+      community.routeros.api_info:
+        hostname: "{{ ansible_host }}"
+        username: "{{ ansible_user }}"
+        password: "{{ ansible_password }}"
+        path: ip address
+      register: ip_addresses
+
+    - name: Print data for IP addresses
+      debug:
+        var: ip_addresses.result
+
+
+
+
+    - name: Gather facts with SNMP version 2
+      delegate_to: localhost
+      vars:
+        ansible_python_interpreter: /usr/bin/python3
+      community.general.snmp_facts:
+        host: '{{ ansible_host }}'
+        version: v2c
+        community: public
+      register: counters
+
+
+    - debug:
+        var: counters
