@@ -75,7 +75,14 @@
 
     - name: Expand and produce list of usable IP addresses
       debug:
-        msg: "{{ '10.0.1.200/29' | ansible.utils.usable_range }}"
+        msg: "{{ '10.0.1.202/29' | ansible.utils.usable_range }}"
+      ignore_errors: true
+
+
+    - name: Expand and produce list of usable IP addresses
+      debug:
+        msg: "{{ '10.0.1.202/29' | ansible.utils.ipsubnet | ansible.utils.usable_range }}"
+
 
 
 #============================ SEE ALSO ===============================================
