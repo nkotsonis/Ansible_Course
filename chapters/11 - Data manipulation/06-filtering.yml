@@ -28,6 +28,11 @@
     #     var: list2 | max
 
 
+    - name: Filter the list (keep only the values greater than 40)
+      debug:
+        var: list1 | select('>', 40) | list
+
+
     - name: Shuffle list
       debug:
         var: list1 | shuffle
